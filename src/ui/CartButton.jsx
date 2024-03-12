@@ -6,7 +6,7 @@ function CartButton() {
   const { isDarkMode } = useDarkMode();
   const svgClass = 'w-6 h-6';
   return (
-    <button className="hover:bg-grey-2 mt-[4px] hidden rounded-full  border-transparent bg-none p-1 transition duration-200 ease-in-out md:block ">
+    <button aria-label='Cart button' className="hover:bg-grey-2 mt-[4px] hidden rounded-full  border-transparent bg-none p-1 transition duration-200 ease-in-out md:block ">
       {isDarkMode ? (
         <IoCart className={svgClass} />
       ) : (

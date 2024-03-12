@@ -1,5 +1,5 @@
 function Cart() {
-  return <div>Cart</div>;
+  return <div className="min-h-screen"></div>;
 }
 
 export default Cart;

@@ -5,7 +5,7 @@ export default {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: 'Roboto, monospace',
+      sans: 'Open Sans, monospace',
     },
 
     extend: {
@@ -53,6 +53,12 @@ export default {
       },
       boxShadow: {
         sm: 'var(--shadow-sm)',
+      },
+      screens: {
+        xs: '480px',
+      },
+      gridTemplateColumns: {
+        card: 'repeat(auto-fit, minmax(280px, 1fr))',
       },
     },
   },

@@ -6,8 +6,9 @@ function DarkModeToggle() {
   const svgClass = 'w-6 h-6';
   return (
     <button
+      aria-label="Light mode button"
       onClick={toggleDarkMode}
-      className="hover:bg-grey-2 mt-[4px] hidden rounded-full  border-transparent bg-none p-1 transition duration-200 ease-in-out md:block"
+      className="mt-[4px] hidden rounded-full border-transparent  bg-none p-1 transition duration-200 ease-in-out hover:bg-grey-2 md:block"
     >
       {isDarkMode ? (
         <HiOutlineSun className={svgClass} />

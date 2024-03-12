@@ -3,9 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import DarkModeToggleMob from './DarkModeToggleMob';
 import BurgerMenuLink from './BurgerMenuLink';
 import Button from './Button';
+import useUser from '../features/authentication/useUser';
+import { MdClose } from 'react-icons/md';
 
 function BurgerMenu() {
-  const { isOpen } = useBurgerMenu();
+  const { isOpen, toggleMenu } = useBurgerMenu();
+  const user = useUser();
   const menuVars = {
     initial: {
       scaleY: 0,
@@ -36,7 +39,7 @@ function BurgerMenu() {
     },
     open: {
       transition: {
-        delayChildren: 0.3,
+        delayChildren: 0.2,
         staggerChildren: 0.09,
         staggerDirection: -1,
       },
@@ -47,14 +50,14 @@ function BurgerMenu() {
     initial: {
       y: '30vh',
       transition: {
-        duration: 0.5,
+        duration: 0.3,
         ease: [0.37, 0, 0.63, 1],
       },
     },
     open: {
       y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.3,
         ease: [0, 0.55, 0.45, 1],
       },
     },
@@ -76,20 +79,27 @@ function BurgerMenu() {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="bg-grey-0.5 text-grey-6 fixed left-0 top-0 z-40 h-screen w-screen origin-top  overscroll-none"
+          className="z-90 absolute inset-0 h-screen w-screen origin-top bg-grey-0.5 text-grey-6"
         >
-          <div className="flex h-full flex-col p-7">
+          <div className="flex h-full flex-col gap-20 p-7">
             <div className="flex justify-between">
               <h1 className="mt-3 text-xl font-black tracking-widest">
                 InstantMart
               </h1>
+              <button
+                className="z-50  mt-[4px] rounded-full  border-transparent bg-none p-1 transition duration-200 ease-in-out hover:bg-grey-2 md:hidden "
+                onClick={toggleMenu}
+                aria-label="open menu"
+              >
+                <MdClose className="h-6 w-6  " />
+              </button>
             </div>
             <motion.ul
               variants={containerVars}
               initial="initial"
               animate="open"
               exit="initial"
-              className="flex h-full flex-col items-center justify-center gap-10  "
+              className="  flex flex-col items-center  justify-center gap-9 "
             >
               {menuLinks.map((link) => (
                 <BurgerMenuLink
@@ -104,14 +114,15 @@ function BurgerMenu() {
                 initial="initial"
                 animate="open"
               >
-                <Button to="/login" type="secondary">
-                  Sign in
-                </Button>
-                {/* <Link to="/login">
-                  <button className="focus:shadow-outline bg-brand-6 text-brand-0.5 hover:bg-brand-7 rounded-full   px-10 py-4 text-2xl font-semibold  focus:outline-none">
-                    Sign In
-                    </button>
-                  </Link> */}
+                {!user ? (
+                  <Button to="/login" type="secondary">
+                    Sign in
+                  </Button>
+                ) : (
+                  <Button to="/" type="secondary">
+                    Log out
+                  </Button>
+                )}
               </motion.li>
             </motion.ul>
 
@@ -119,7 +130,7 @@ function BurgerMenu() {
               variants={mobileLinkVars}
               initial="initial"
               animate="open"
-              className="text-grey-6 absolute bottom-5 right-5"
+              className="absolute bottom-5 right-5 text-grey-6"
             >
               <DarkModeToggleMob />
             </motion.div>

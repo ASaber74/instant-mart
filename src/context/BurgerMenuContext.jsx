@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 const BurgerMenuContext = createContext();
 
@@ -6,7 +7,13 @@ function BurgerMenuProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleMenu() {
-    setIsOpen((open) => !open);
+    if (isOpen) {
+      setIsOpen(false);
+      enablePageScroll();
+    } else {
+      setIsOpen(true);
+      disablePageScroll();
+    }
   }
 
   return (

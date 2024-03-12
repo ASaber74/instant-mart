@@ -79,3 +79,56 @@
 
 /* --bg-100: #fffefb; */
 /* --bg-100: #1e1e1e; */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .input {
+    @apply rounded-lg border
+  border-grey-3 bg-grey-1 px-4 py-2 text-sm text-grey-6
+    transition-all duration-300 placeholder:text-grey-4 focus:border-indigo-1 
+    focus:outline-none focus:ring md:px-6 md:py-3;
+  }
+}
+
+@layer utilities {
+  .padding {
+    @apply px-8 py-12 sm:px-16 sm:py-24;
+  }
+
+  .padding-x {
+    @apply px-8 sm:px-16;
+  }
+
+  .padding-y {
+    @apply py-12 sm:py-24;
+  }
+
+  .padding-l {
+    @apply pl-8 sm:pl-16;
+  }
+
+  .padding-r {
+    @apply pr-8 sm:pr-16;
+  }
+
+  .padding-t {
+    @apply pt-12 sm:pt-24;
+  }
+
+  .padding-b {
+    @apply pb-12 sm:pb-24;
+  }
+
+  .info-text {
+    @apply text-slate-gray text-lg leading-7;
+  }
+}

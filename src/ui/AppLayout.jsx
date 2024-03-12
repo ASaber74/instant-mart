@@ -1,23 +1,17 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import { useBurgerMenu } from '../context/BurgerMenuContext';
 
 function AppLayout() {
-  const { isOpen } = useBurgerMenu();
   return (
     <>
-      <div className={` ${isOpen && 'overflow-hidden'}`}>
-        <Header />
+      <Header />
 
-        <div className=" flex  bg-grey-0.5">
-          <main className="mx-auto  max-w-3xl">
-            <Outlet />
-          </main>
-        </div>
+      <main className=" z-0 flex  flex-col bg-grey-0.5">
+        <Outlet />
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

@@ -3,38 +3,19 @@ import Logo from './Logo';
 import HeaderMenu from './HeaderMenu';
 import Navbar from './Navbar';
 import BurgerMenu from './BurgerMenu';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useState } from 'react';
+import BurgerMenuIcon from './BurgerMenuIcon';
 
-function Header() {
-  const [isHidden, setIsHidden] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 10) {
-      setIsHidden(true);
-    } else {
-      setIsHidden(false);
-    }
-  });
+function Header({}) {
   return (
-    <motion.header
-      variants={{
-        visible: { y: 0 },
-        hidden: { y: '-100%' },
-      }}
-      animate={isHidden ? 'hidden' : 'visible'}
-      transition={{ duration: 0.35, ease: 'easeInOut' }}
-      className="relative w-full"
-    >
+    <header className=" sticky top-0 z-10 w-full border-b border-grey-1 bg-grey-0 p-4">
       <Navbar>
-        <Logo />
+        <Logo type="header" />
         <SearchProduct />
         <HeaderMenu />
-        <BurgerMenu />
+        <BurgerMenuIcon />
       </Navbar>
-    </motion.header>
+        <BurgerMenu />
+    </header>
   );
 }
 
