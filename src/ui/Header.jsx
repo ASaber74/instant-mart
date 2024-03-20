@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import BurgerMenu from './BurgerMenu';
 import BurgerMenuIcon from './BurgerMenuIcon';
 
-function Header({}) {
+function Header() {
   return (
     <header className=" sticky top-0 z-10 w-full border-b border-grey-1 bg-grey-0 p-4">
       <Navbar>
@@ -14,7 +14,7 @@ function Header({}) {
         <HeaderMenu />
         <BurgerMenuIcon />
       </Navbar>
-        <BurgerMenu />
+      <BurgerMenu />
     </header>
   );
 }

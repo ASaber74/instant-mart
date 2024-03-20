@@ -3,14 +3,16 @@ import DarkModeToggle from './DarkModeToggle';
 import CartButton from './CartButton';
 import useUser from '../features/authentication/useUser';
 import ProfilePicture from './ProfilePicture';
+import { useLogout } from '../features/authentication/useLogout';
 function HeaderMenu() {
   const user = useUser();
-  console.log(user.name)
+  const { logout, isPending } = useLogout();
+
   return (
     <ul className="flex items-center justify-center gap-3 max-md:hidden">
       {
         <li>
-          {user.name ? (
+          {!user?.user?.name ? (
             <Button type="primary" to="/login">
               Sign in
             </Button>
@@ -26,6 +28,18 @@ function HeaderMenu() {
       <li>
         <DarkModeToggle />
       </li>
+      {user?.user?.name && (
+        <li>
+          <Button
+            type="primary"
+            to="/login"
+            onClick={logout}
+            disabled={isPending}
+          >
+            log out
+          </Button>
+        </li>
+      )}
     </ul>
   );
 }

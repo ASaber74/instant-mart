@@ -2,7 +2,6 @@ import instance from '../../axios';
 
 export async function signup({ name, email, password, confirmPassword }) {
   try {
-    console.log(name, email, password, confirmPassword);
     const res = await instance.post('/users/signup', {
       name,
       email,
@@ -23,10 +22,21 @@ export async function login({ email, password }) {
   }
 }
 
-export async function getUser() {
+export async function getCurrentUser() {
   try {
-    const res = await instance.get('/users/65e1c11da53f24ddc936f0e2');
-    return res.data;
+    const res = await instance.get('/users/current-user');
+    return res?.data?.user;
+  } catch (error) {
+    if (error.response.status === 401) return { user: null };
+
+    // throw new Error(error.response.data.message);
+  }
+}
+
+export async function logout() {
+  try {
+    const res = await instance.post('/users/logout');
+    return res;
   } catch (error) {
     throw new Error(error.response.data.message);
   }

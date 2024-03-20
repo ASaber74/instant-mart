@@ -47,7 +47,7 @@ function Footer() {
         <div className="flex flex-1 cursor-pointer items-center justify-start gap-2">
           <img
             alt="copyright sign"
-            src="src\data\images\copyright.svg"
+            src="..\images\copyright.svg"
             width={20}
             height={20}
             className="m-0 rounded-full"

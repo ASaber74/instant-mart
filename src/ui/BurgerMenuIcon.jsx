@@ -2,7 +2,7 @@ import { HiMenu } from 'react-icons/hi';
 import { useBurgerMenu } from '../context/BurgerMenuContext';
 
 function BurgerMenuIcon() {
-  const {toggleMenu } = useBurgerMenu();
+  const { toggleMenu } = useBurgerMenu();
 
   return (
     <button
@@ -10,7 +10,7 @@ function BurgerMenuIcon() {
       onClick={toggleMenu}
       aria-label="open menu"
     >
-      <HiMenu className="h-6 w-6  " />
+      <HiMenu className="h-6 w-6 " />
     </button>
   );
 }

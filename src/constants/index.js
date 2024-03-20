@@ -1,6 +1,3 @@
-import { HiGiftTop } from 'react-icons/hi2';
-import { FaHandsHelping, FaShippingFast } from 'react-icons/fa';
-
 export const books = [
   {
     imageUrl:
@@ -42,19 +39,19 @@ export const books = [
 
 export const services = [
   {
-    icon: `src\\data\\icons\\shipping-fast-solid-svgrepo-com.svg`,
+    icon: `public\\icons\\shipping-fast-solid-svgrepo-com.svg`,
     heading: 'Free shipping',
     description:
       'Enjoy seamless shopping with our complimentary shipping service.',
   },
   {
-    icon: 'src\\data\\icons\\handshake-svgrepo-com.svg',
+    icon: 'public\\icons\\handshake-svgrepo-com.svg',
     heading: 'Love to help you',
     description:
       'Our dedicated team is here to assist you every step of the way.',
   },
   {
-    icon: 'src\\data\\icons\\gift-square-svgrepo-com.svg',
+    icon: 'public\\icons\\gift-square-svgrepo-com.svg',
     heading: ' Gift Wrapping',
     description:
       'Make every book purchase a special occasion with our gift wrapping service.',
@@ -63,14 +60,14 @@ export const services = [
 
 export const reviews = [
   {
-    imgURL: 'src\\data\\images\\uiface-1.jpg',
+    imgURL: 'public\\images\\uiface-1.jpg',
     customerName: 'Morich Brown',
     rating: 4.5,
     feedback:
       'The attention to detail and the quality of the product exceeded my expectations. Highly recommended!',
   },
   {
-    imgURL: 'src\\data\\images\\uiface-2.jpg',
+    imgURL: 'public\\images\\uiface-2.jpg',
     customerName: 'Alan Hansen',
     rating: 4.5,
     feedback:
@@ -81,15 +78,15 @@ export const reviews = [
 export const socialMedia = [
   {
     alt: 'facebook logo',
-    src: 'src\\data\\images\\facebook-logo.svg',
+    src: 'public\\images\\facebook-logo.svg',
   },
   {
     alt: 'twitter logo',
-    src: 'src\\data\\images\\twitter-logo.svg',
+    src: 'public\\images\\twitter-logo.svg',
   },
   {
     alt: 'instagram logo',
-    src: 'src\\data\\images\\instagram-logo.svg',
+    src: 'public\\images\\instagram-logo.svg',
   },
 ];
 

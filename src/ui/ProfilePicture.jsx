@@ -10,7 +10,7 @@ function ProfilePicture() {
         src="src\data\images\Ai.png"
         className="mt-1  w-8 rounded-full object-cover"
       />
-      <p className="mt-1"></p>
+      <span className="mt-1 capitalize font-semibold">{user?.user?.name}</span>
     </div>
   );
 }

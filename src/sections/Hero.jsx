@@ -1,13 +1,12 @@
 import { HiArrowLongRight } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 function Hero() {
   return (
     <>
       <div className="relative w-full overflow-hidden sm:max-h-[60vh]">
         <img
-          src="src\data\images\hero.png"
+          src="..\images\hero.png"
           alt="Background"
           className="h-[60vh]  w-full object-cover object-center"
         />

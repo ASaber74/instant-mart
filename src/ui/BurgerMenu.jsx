@@ -114,7 +114,7 @@ function BurgerMenu() {
                 initial="initial"
                 animate="open"
               >
-                {!user ? (
+                {!user?.user?.name ? (
                   <Button to="/login" type="secondary">
                     Sign in
                   </Button>

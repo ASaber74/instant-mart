@@ -48,7 +48,7 @@ function SuperQuality() {
       <div className="flex flex-1 items-center justify-center">
         <img
           alt="reading svg"
-          src="src\data\images\undraw_book_lover_re_rwjy.svg"
+          src="..\images\undraw_book_lover_re_rwjy.svg"
           className="object-contain"
           width={570}
           height={522}
