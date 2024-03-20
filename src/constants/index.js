@@ -39,19 +39,19 @@ export const books = [
 
 export const services = [
   {
-    icon: `public\\icons\\shipping-fast-solid-svgrepo-com.svg`,
+    icon: `../icons/shipping-fast-solid-svgrepo-com.svg`,
     heading: 'Free shipping',
     description:
       'Enjoy seamless shopping with our complimentary shipping service.',
   },
   {
-    icon: 'public\\icons\\handshake-svgrepo-com.svg',
+    icon: '../icons/handshake-svgrepo-com.svg',
     heading: 'Love to help you',
     description:
       'Our dedicated team is here to assist you every step of the way.',
   },
   {
-    icon: 'public\\icons\\gift-square-svgrepo-com.svg',
+    icon: '../icons/gift-square-svgrepo-com.svg',
     heading: ' Gift Wrapping',
     description:
       'Make every book purchase a special occasion with our gift wrapping service.',
@@ -60,14 +60,14 @@ export const services = [
 
 export const reviews = [
   {
-    imgURL: 'public\\images\\uiface-1.jpg',
+    imgURL: '../images/uiface-1.jpg',
     customerName: 'Morich Brown',
     rating: 4.5,
     feedback:
       'The attention to detail and the quality of the product exceeded my expectations. Highly recommended!',
   },
   {
-    imgURL: 'public\\images\\uiface-2.jpg',
+    imgURL: '../images/uiface-2.jpg',
     customerName: 'Alan Hansen',
     rating: 4.5,
     feedback:
@@ -78,15 +78,15 @@ export const reviews = [
 export const socialMedia = [
   {
     alt: 'facebook logo',
-    src: 'public\\images\\facebook-logo.svg',
+    src: '../images/facebook-logo.svg',
   },
   {
     alt: 'twitter logo',
-    src: 'public\\images\\twitter-logo.svg',
+    src: '../images/twitter-logo.svg',
   },
   {
     alt: 'instagram logo',
-    src: 'public\\images\\instagram-logo.svg',
+    src: '../images/instagram-logo.svg',
   },
 ];
 
