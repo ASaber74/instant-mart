@@ -1,5 +1,6 @@
 import { HiStar } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
+import { formatCurrency } from '../utils/helpers';
 
 function PopularProductsCard({ imageUrl, name, price, id }) {
   return (
@@ -24,7 +25,7 @@ function PopularProductsCard({ imageUrl, name, price, id }) {
               {name}
             </h1>
             <p className=" mb-4 mt-2 text-2xl font-semibold leading-normal text-brand-6 ">
-              {price}
+              {formatCurrency(price)}
             </p>
           </div>
         </Link>

@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { books } from '../constants';
 import { useState } from 'react';
 import QuantitySelector from '../ui/QuantitySelector';
+import { formatCurrency } from '../utils/helpers';
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -45,7 +46,7 @@ function ProductDetail() {
             Price:{' '}
             <span className="font-bold text-brand-6">
               {' '}
-              ${quantity * product.price}.00{' '}
+              {formatCurrency(quantity * product.price)}{' '}
             </span>
           </p>
           <div className="flex items-center gap-4">
