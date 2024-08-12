@@ -19,22 +19,22 @@ function ProductDetail() {
   }
 
   return (
-    <section className="mx-32">
+    <section className="md:mx-32">
       <div className="m-16 mb-0 flex flex-col gap-16 border-b-2 border-b-grey-4 pb-5 md:flex-row">
         <img
           src={product.imageUrl}
           alt={product.name}
           width={400}
           height="auto"
-          className="object-contain shadow-2xl h-auto max-h-[500px]"
+          className="h-auto max-h-[500px] rounded-lg object-cover shadow-2xl"
         />
         <div className="mt-2 flex flex-grow flex-col gap-5">
           <h1 className="text-3xl font-bold text-brand-6">{product.name}</h1>
-          <div className="flex items-center justify-between">
-            <p className="text-xl">
+          <div className="max-md:mr-auto flex flex-col items-center justify-between gap-5 md:flex-row md:gap-0">
+            <p className="text-xl max-md:mr-auto">
               Author: <span className="font-bold">{product.author}</span>{' '}
             </p>
-            <p>Published: {product.publishDate}</p>
+            <p className="max-md:mr-auto">Published: {product.publishDate}</p>
           </div>
           <p className="text-xl">Pages: {product.pageCount}</p>
           <p className="text-xl">Genre: {product.genre}</p>
@@ -68,7 +68,7 @@ function ProductDetail() {
 
         <div>
           <h1 className="text-2xl font-bold">Shipping & Return</h1>
-          <p className="w-2/3 py-3 text-lg text-grey-4 leading-8">
+          <p className="w-2/3 py-3 text-lg leading-8 text-grey-4">
             Shipping cost is based on the city. Just add products to your cart
             and use the Shipping Calculator to see the shipping price.
             <br />

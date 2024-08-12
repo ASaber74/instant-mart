@@ -10,7 +10,7 @@ export function formatDate(dateStr) {
     day: "numeric",
     month: "short",
     hour: "2-digit",
-    minute: "2-digit",
+    minute: "2-digit"
   }).format(new Date(dateStr));
 }
 
