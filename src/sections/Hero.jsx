@@ -31,9 +31,9 @@ function Hero() {
           </p>
 
           <Link to="/products">
-            <button className=" flex  w-[150px] items-center justify-center gap-1 rounded-full bg-brand-6 px-2   py-1 text-sm font-semibold  uppercase text-brand-0.5  transition-colors duration-300 hover:bg-brand-7 focus:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed sm:mt-3 sm:gap-2 sm:px-3 sm:py-2">
+            <button className=" group flex w-[150px] items-center justify-center gap-1 rounded-full bg-brand-6 px-2 py-1 text-sm font-semibold uppercase text-brand-0.5 transition-colors duration-300 hover:bg-brand-7 hover:text-brand-0.5 focus:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed sm:mt-3 sm:gap-2 sm:px-3 sm:py-2">
               Explore Now
-              <HiArrowLongRight />
+              <HiArrowLongRight className="transform transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </Link>
         </div>

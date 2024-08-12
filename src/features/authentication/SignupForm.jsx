@@ -6,6 +6,7 @@ import { BiHide, BiShow } from 'react-icons/bi';
 
 function SignupForm() {
   const [isToggle, setIsToggle] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const { signup, isPending } = useSignup();
   const { register, formState, getValues, handleSubmit } = useForm();

@@ -1,39 +1,93 @@
 export const books = [
   {
+    id: 1,
     imageUrl:
       'https://i.pinimg.com/564x/11/17/3d/11173d2c0d53b80ad69f1e047615d205.jpg',
     name: 'Atomic Habits',
-    price: '$12.00',
+    price: '12.00',
+    author: 'James Clear',
+    description:
+      'A comprehensive guide on how to build good habits and break bad ones, focusing on small changes that can lead to significant results.',
+    publisher: 'Avery',
+    publishDate: 'October 16, 2018',
+    pageCount: 320,
+    genre: 'Self-help',
+    isbn: '9780735211292',
   },
   {
+    id: 2,
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '$10.00',
+    price: '10.00',
+    author: 'Robert T. Kiyosaki',
+    description:
+      'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
+    publisher: 'Plata Publishing',
+    publishDate: 'April 8, 1997',
+    pageCount: 336,
+    genre: 'Personal Finance',
+    isbn: '9781612680194',
   },
   {
+    id: 3,
     imageUrl:
       'https://i.pinimg.com/736x/e4/db/31/e4db3122b62b633bbd0f209627a8cadf.jpg',
     name: 'The Subtle Art of Not Giving a Fck',
-    price: '$15.00',
+    price: '15.00',
+    author: 'Mark Manson',
+    description:
+      'A counterintuitive approach to living a good life, this book challenges the conventional wisdom of always being positive.',
+    publisher: 'HarperOne',
+    publishDate: 'September 13, 2016',
+    pageCount: 224,
+    genre: 'Self-help',
+    isbn: '9780062457714',
   },
   {
+    id: 4,
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '$10.00',
+    price: '10.00',
+    author: 'Robert T. Kiyosaki',
+    description:
+      'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
+    publisher: 'Plata Publishing',
+    publishDate: 'April 8, 1997',
+    pageCount: 336,
+    genre: 'Personal Finance',
+    isbn: '9781612680194',
   },
   {
+    id: 5,
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '$10.00',
+    price: '10.00',
+    author: 'Robert T. Kiyosaki',
+    description:
+      'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
+    publisher: 'Plata Publishing',
+    publishDate: 'April 8, 1997',
+    pageCount: 336,
+    genre: 'Personal Finance',
+    isbn: '9781612680194',
   },
   {
+    id: 6,
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '$10.00',
+    price: '10.00',
+    author: 'Robert T. Kiyosaki',
+    description:
+      'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
+    publisher: 'Plata Publishing',
+    publishDate: 'April 8, 1997',
+    pageCount: 336,
+    genre: 'Personal Finance',
+    isbn: '9781612680194',
   },
 ];
 
