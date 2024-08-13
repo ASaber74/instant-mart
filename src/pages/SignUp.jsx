@@ -18,14 +18,14 @@ function SignUp() {
 
         <div className="mb-2 flex justify-center gap-2">
           <p className="font-light text-grey-6">Already have an account?</p>
-          <Link class="font-bold  text-brand-6 hover:underline" to="/login">
+          <Link className="font-bold  text-brand-6 hover:underline" to="/login">
             Log in Here
           </Link>
         </div>
 
         <div className="flex justify-center gap-2">
           <p className="font-light text-grey-6">Having trouble?</p>
-          <Link class="font-bold  text-brand-6 hover:underline" to="/contact">
+          <Link className="font-bold  text-brand-6 hover:underline" to="/contact">
             Contact Us
           </Link>
         </div>
