@@ -6,7 +6,6 @@ import ProfilePicture from './ProfilePicture';
 import { useLogout } from '../features/authentication/useLogout';
 function HeaderMenu() {
   const user = useUser();
-  const isUser = true;
   const { logout, isPending } = useLogout();
 
   return (

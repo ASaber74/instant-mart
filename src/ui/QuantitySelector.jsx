@@ -17,7 +17,7 @@ const QuantitySelector = ({ onChange }) => {
 
   return (
     <>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 max-w-24 ">
         <div className="flex items-center rounded-md border border-gray-300">
           <button onClick={handleDecrease} className="px-3 py-2 text-gray-700">
             -

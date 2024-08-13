@@ -4,7 +4,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/564x/11/17/3d/11173d2c0d53b80ad69f1e047615d205.jpg',
     name: 'Atomic Habits',
-    price: '12.00',
+    price: '600.00',
     author: 'James Clear',
     description:
       'A comprehensive guide on how to build good habits and break bad ones, focusing on small changes that can lead to significant results.',
@@ -19,7 +19,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '10.00',
+    price: '700.00',
     author: 'Robert T. Kiyosaki',
     description:
       'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
@@ -34,7 +34,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/736x/e4/db/31/e4db3122b62b633bbd0f209627a8cadf.jpg',
     name: 'The Subtle Art of Not Giving a Fck',
-    price: '15.00',
+    price: '1500.00',
     author: 'Mark Manson',
     description:
       'A counterintuitive approach to living a good life, this book challenges the conventional wisdom of always being positive.',
@@ -49,7 +49,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '10.00',
+    price: '1000.00',
     author: 'Robert T. Kiyosaki',
     description:
       'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
@@ -64,7 +64,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '10.00',
+    price: '2000.00',
     author: 'Robert T. Kiyosaki',
     description:
       'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
@@ -79,7 +79,7 @@ export const books = [
     imageUrl:
       'https://i.pinimg.com/564x/3a/25/a8/3a25a84e9f51266ff5e27055b054a6d1.jpg',
     name: 'Rich Dad Poor Dad',
-    price: '10.00',
+    price: '350.00',
     author: 'Robert T. Kiyosaki',
     description:
       'A book that explores the difference in mindset between the wealthy and the poor, emphasizing financial education and independence.',
@@ -115,14 +115,14 @@ export const services = [
 export const reviews = [
   {
     imgURL: '../images/uiface-1.jpg',
-    customerName: 'Morich Brown',
+    customerName: 'Ahmed Saber',
     rating: 4.5,
     feedback:
       'The attention to detail and the quality of the product exceeded my expectations. Highly recommended!',
   },
   {
     imgURL: '../images/uiface-2.jpg',
-    customerName: 'Alan Hansen',
+    customerName: 'Mohamed Hany',
     rating: 4.5,
     feedback:
       "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",

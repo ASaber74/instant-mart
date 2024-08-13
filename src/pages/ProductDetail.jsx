@@ -39,7 +39,7 @@ function ProductDetail() {
           <p className="text-xl">Pages: {product.pageCount}</p>
           <p className="text-xl">Genre: {product.genre}</p>
           <p className="text-xl">
-            {' '}
+            ca
             <span className="font-bold">ISBN: </span> {product.isbn}
           </p>
           <p className="text-xl">

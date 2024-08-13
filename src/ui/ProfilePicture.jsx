@@ -7,7 +7,7 @@ function ProfilePicture() {
     <div className="flex items-center justify-center gap-2">
       <img
         alt="Profile"
-        src="src\data\images\Ai.png"
+        src="images\Ai.png"
         className="mt-1  w-8 rounded-full object-cover"
       />
       <span className="mt-1 capitalize font-semibold">{user?.user?.name}</span>

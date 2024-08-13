@@ -1,7 +1,7 @@
 
 
 function About() {
-  return <div></div>;
+  return <div className="m-auto">About</div>;
 }
 
 export default About;
