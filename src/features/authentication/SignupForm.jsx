@@ -135,9 +135,21 @@ function SignupForm() {
         </div>
       </div>
 
-      <button type='submit' disabled={isPending} className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-6 bg-brand-6 px-7 py-4 text-lg leading-none text-brand-0.5 hover:bg-brand-7">
-        
-      {isPending ? 'Craeting Account...' : 'Create Account'}
+      <button
+        type="submit"
+        disabled={isPending}
+        className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-6 bg-brand-6 px-7 py-4 text-lg leading-none text-brand-0.5 hover:bg-brand-7"
+      >
+        {isPending ? (
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          'Create Account'
+        )}
       </button>
     </form>
   );

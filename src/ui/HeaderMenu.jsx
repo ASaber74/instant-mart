@@ -32,7 +32,6 @@ function HeaderMenu() {
         <li>
           <Button
             type="primary"
-            to="/login"
             onClick={logout}
             disabled={isPending}
           >

@@ -15,7 +15,7 @@ export async function signup({ name, email, password, confirmPassword }) {
 
 export async function login({ email, password }) {
   try {
-    const res = await instance.post('/users/login', { email, password }, {withCredentials: true});
+    const res = await instance.post('/users/login', { email, password });
     return res.data;
   } catch (error) {
     throw new Error(error.response.data.message);
@@ -38,7 +38,8 @@ export async function logout() {
     return res.data;
   } catch (error) {
     console.error('Logout Error:', error);
-    throw new Error(error.response?.data?.message || 'An error occurred while logging out.');
+    throw new Error(
+      error.response?.data?.message || 'An error occurred while logging out.',
+    );
   }
 }
-

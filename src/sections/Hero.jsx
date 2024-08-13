@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 function Hero() {
   return (
     <>
-      <div className="relative w-full overflow-hidden sm:max-h-[60vh]">
+      <div className="relative w-full overflow-hidden shadow-xl sm:max-h-[60vh]">
         <img
           src="..\images\hero.png"
           alt="Background"
           className="h-[60vh]  w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="hero-opacity absolute inset-0 bg-black"></div>
 
         <div className=" absolute  left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col space-y-2  text-white max-sm:min-w-72 max-sm:gap-0.5">
           <h1 className="text-xl font-semibold tracking-tight sm:text-3xl  lg:mt-7 xl:text-5xl ">
