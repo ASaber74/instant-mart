@@ -8,6 +8,7 @@ import AppLayout from './ui/AppLayout';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { BurgerMenuProvider } from './context/BurgerMenuContext';
 import FallbackUI from './ui/FallbackUI';
+import ScrollToTop from './utils/ScrollToTop';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const Products = React.lazy(() => import('./pages/Products'));
@@ -35,6 +36,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools initialIsOpen={false} />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route element={<AppLayout />}>
                 <Route
@@ -52,7 +54,10 @@ function App() {
                   }
                 />
                 <Route index element={<Navigate replace to="home" />} />
-                <Route path="products" element={<Suspense
+                <Route
+                  path="products"
+                  element={
+                    <Suspense
                       fallback={
                         <div className="m-auto h-screen w-full">
                           <FallbackUI />
@@ -60,7 +65,9 @@ function App() {
                       }
                     >
                       <Products />
-                    </Suspense>} />
+                    </Suspense>
+                  }
+                />
                 <Route
                   path="products/:productId"
                   element={
