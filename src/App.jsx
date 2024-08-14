@@ -7,10 +7,8 @@ import { Toaster } from 'react-hot-toast';
 import AppLayout from './ui/AppLayout';
 import { DarkModeProvider } from './context/DarkModeContext';
 import { BurgerMenuProvider } from './context/BurgerMenuContext';
-import LoadingSpinner from './ui/LoadingSpinner';
 import FallbackUI from './ui/FallbackUI';
 
-// Lazy load components
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const Products = React.lazy(() => import('./pages/Products'));
 const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
@@ -44,7 +42,7 @@ function App() {
                   element={
                     <Suspense
                       fallback={
-                        <div className='h-screen m-auto w-full'>
+                        <div className="m-auto h-screen w-full">
                           <FallbackUI />
                         </div>
                       }
@@ -55,13 +53,104 @@ function App() {
                 />
                 <Route index element={<Navigate replace to="home" />} />
                 <Route path="products" element={<Products />} />
-                <Route path="products/:productId" element={<ProductDetail />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="account" element={<Account />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="about" element={<About />} />
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<SignUp />} />
+                <Route
+                  path="products/:productId"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <ProductDetail />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="cart"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <Cart />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="account"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <Account />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="contact"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <Contact />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="about"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <About />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="login"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <Login />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="signup"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <SignUp />
+                    </Suspense>
+                  }
+                />
               </Route>
               <Route path="*" element={<PageNotFound />} />
             </Routes>
