@@ -1,7 +1,7 @@
-
+import UnderConstruction from '../ui/UnderConstruction';
 
 function About() {
-  return <div className="m-auto">About</div>;
+  return <UnderConstruction />;
 }
 
 export default About;

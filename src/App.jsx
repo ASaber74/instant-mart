@@ -52,7 +52,15 @@ function App() {
                   }
                 />
                 <Route index element={<Navigate replace to="home" />} />
-                <Route path="products" element={<Products />} />
+                <Route path="products" element={<Suspense
+                      fallback={
+                        <div className="m-auto h-screen w-full">
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <Products />
+                    </Suspense>} />
                 <Route
                   path="products/:productId"
                   element={

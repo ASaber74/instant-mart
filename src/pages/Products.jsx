@@ -1,8 +1,8 @@
+import UnderConstruction from "../ui/UnderConstruction"
+
 function Products() {
   return (
-    <div>
-      Products
-    </div>
+    <UnderConstruction />
   )
 }
 
