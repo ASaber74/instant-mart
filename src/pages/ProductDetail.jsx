@@ -22,6 +22,7 @@ function ProductDetail() {
     <section className="md:mx-32">
       <div className="m-16 mb-0 flex flex-col gap-16 border-b-2 border-b-grey-4 pb-5 md:flex-row">
         <img
+          loading="lazy"
           src={product.imageUrl}
           alt={product.name}
           width={400}
@@ -30,7 +31,7 @@ function ProductDetail() {
         />
         <div className="mt-2 flex flex-grow flex-col gap-5">
           <h1 className="text-3xl font-bold text-brand-6">{product.name}</h1>
-          <div className="max-md:mr-auto flex flex-col items-center justify-between gap-5 md:flex-row md:gap-0">
+          <div className="flex flex-col items-center justify-between gap-5 max-md:mr-auto md:flex-row md:gap-0">
             <p className="text-xl max-md:mr-auto">
               Author: <span className="font-bold">{product.author}</span>{' '}
             </p>

@@ -48,6 +48,7 @@ function SuperQuality() {
       <div className="flex flex-1 items-center justify-center">
         <img
           alt="reading svg"
+          loading='laze'
           src="..\images\undraw_book_lover_re_rwjy.svg"
           className="object-contain"
           width={570}

@@ -8,6 +8,7 @@ function PopularProductsCard({ imageUrl, name, price, id }) {
       <div className=" flex  w-[285px] flex-col overflow-hidden rounded-lg bg-grey-1 shadow-2xl ">
         <Link to={`/products/${id}`} className="cursor-pointer">
           <img
+            loading="lazy"
             src={imageUrl}
             alt={name}
             height={285}

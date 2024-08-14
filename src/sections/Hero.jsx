@@ -6,7 +6,8 @@ function Hero() {
     <>
       <div className="relative w-full overflow-hidden shadow-xl sm:max-h-[60vh]">
         <img
-          src="..\images\hero.png"
+          src="..\images\hero.jpg"
+          loading="lazy"
           alt="Background"
           className="h-[60vh]  w-full object-cover object-center"
         />

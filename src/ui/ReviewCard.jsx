@@ -4,6 +4,7 @@ function ReviewCard({ imgURL, customerName, rating, feedback }) {
   return (
     <div className="flex flex-col  items-center justify-center">
       <img
+        loading="lazy"
         alt={customerName}
         src={imgURL}
         className="h-32 w-32 rounded-full object-cover"

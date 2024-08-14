@@ -6,6 +6,7 @@ function ProfilePicture() {
   return (
     <div className="flex items-center justify-center gap-2">
       <img
+        loading="lazy"
         alt="Profile"
         src="images\Ai.png"
         className="mt-1  w-8 rounded-full object-cover"

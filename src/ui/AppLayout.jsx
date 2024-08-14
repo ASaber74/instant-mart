@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import CartTab from '../features/cart/CartTab';
+// import CartTab from '../features/cart/CartTab';
 
 function AppLayout() {
   return (
@@ -13,7 +13,7 @@ function AppLayout() {
       </main>
 
       <Footer />
-      <CartTab />
+      {/* <CartTab /> */}
     </div>
   );
 }
