@@ -5,14 +5,14 @@ import useUser from '../features/authentication/useUser';
 import ProfilePicture from './ProfilePicture';
 import { useLogout } from '../features/authentication/useLogout';
 function HeaderMenu() {
-  const user = useUser();
+  const {user} = useUser();
   const { logout, isPending } = useLogout();
 
   return (
     <ul className="flex items-center justify-center gap-3 max-md:hidden">
       {
         <li>
-          {!user?.user?.name ? (
+          {!user?.name ? (
             <Button type="primary" to="/login">
               Sign in
             </Button>
@@ -28,7 +28,7 @@ function HeaderMenu() {
       <li>
         <DarkModeToggle />
       </li>
-      {user?.user?.name && (
+      {user?.name && (
         <li>
           <Button
             type="primary"

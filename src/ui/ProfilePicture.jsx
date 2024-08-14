@@ -1,7 +1,7 @@
 import useUser from '../features/authentication/useUser';
 
 function ProfilePicture() {
-  const user = useUser();
+  const { user } = useUser();
 
   return (
     <div className="flex items-center justify-center gap-2">
@@ -10,7 +10,7 @@ function ProfilePicture() {
         src="images\Ai.png"
         className="mt-1  w-8 rounded-full object-cover"
       />
-      <span className="mt-1 capitalize font-semibold">{user?.user?.name}</span>
+      <span className="mt-1 font-semibold capitalize">{user?.name}</span>
     </div>
   );
 }

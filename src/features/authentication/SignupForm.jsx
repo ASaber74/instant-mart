@@ -1,19 +1,23 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSignup } from '../authentication/useSignup';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { BiHide, BiShow } from 'react-icons/bi';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 function SignupForm() {
-  const [isToggle, setIsToggle] = useState(true);
+  const [isToggleOne, setIsToggleOne] = useState(true);
+  const [isToggleTwo, setIsToggleTwo] = useState(true);
   // eslint-disable-next-line no-unused-vars
-  const navigate = useNavigate();
   const { signup, isPending } = useSignup();
   const { register, formState, getValues, handleSubmit } = useForm();
   const { errors } = formState;
 
-  function handleToggle() {
-    setIsToggle((toggle) => !toggle);
+  function handleToggleOne() {
+    setIsToggleOne((toggle) => !toggle);
+  }
+  function handleToggleTwo() {
+    setIsToggleTwo((toggle) => !toggle);
   }
 
   function onSubmit({ name, email, password, confirmPassword }) {
@@ -69,7 +73,7 @@ function SignupForm() {
         </label>
         <input
           className="input grow"
-          type={isToggle ? 'password' : 'text'}
+          type={isToggleOne ? 'password' : 'text'}
           id="password"
           disabled={isPending}
           placeholder="8+ Characters Required"
@@ -83,10 +87,10 @@ function SignupForm() {
         />
         <div
           className="absolute right-2 top-12 cursor-pointer max-md:top-11"
-          onClick={handleToggle}
+          onClick={handleToggleOne}
         >
-          {isToggle && <BiHide color="var(--color-grey-600)" />}
-          {!isToggle && <BiShow color="var(--color-grey-600)" />}
+          {isToggleOne && <BiHide color="var(--color-grey-600)" />}
+          {!isToggleOne && <BiShow color="var(--color-grey-600)" />}
         </div>
       </div>
 
@@ -97,7 +101,7 @@ function SignupForm() {
         </label>
         <input
           className="input grow"
-          type={isToggle ? 'password' : 'text'}
+          type={isToggleTwo ? 'password' : 'text'}
           id="confirmPassword"
           disabled={isPending}
           placeholder="Confirm your password"
@@ -108,10 +112,10 @@ function SignupForm() {
         />
         <div
           className="absolute right-2 top-12 cursor-pointer max-md:top-11"
-          onClick={handleToggle}
+          onClick={handleToggleTwo}
         >
-          {isToggle && <BiHide color="var(--color-grey-600)" />}
-          {!isToggle && <BiShow color="var(--color-grey-600)" />}
+          {isToggleTwo && <BiHide color="var(--color-grey-600)" />}
+          {!isToggleTwo && <BiShow color="var(--color-grey-600)" />}
         </div>
       </div>
 
@@ -141,12 +145,7 @@ function SignupForm() {
         className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-6 bg-brand-6 px-7 py-4 text-lg leading-none text-brand-0.5 hover:bg-brand-7"
       >
         {isPending ? (
-          <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <LoadingSpinner />
         ) : (
           'Create Account'
         )}

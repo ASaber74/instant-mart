@@ -8,7 +8,7 @@ import { MdClose } from 'react-icons/md';
 
 function BurgerMenu() {
   const { isOpen, toggleMenu } = useBurgerMenu();
-  const user = useUser();
+  const {user} = useUser();
   const menuVars = {
     initial: {
       scaleY: 0,
@@ -114,7 +114,7 @@ function BurgerMenu() {
                 initial="initial"
                 animate="open"
               >
-                {!user?.user?.name ? (
+                {!user?.name ? (
                   <Button to="/login" type="secondary">
                     Sign in
                   </Button>

@@ -23,13 +23,19 @@ export async function login({ email, password }) {
 }
 
 export async function getCurrentUser() {
-  // try {
-  //   const res = await instance.get('/users/current-user');
-  //   return res?.data?.user;
-  // } catch (error) {
-  //   if (error.response.status === 401) return { user: null };
-  //   throw new Error(error.response.data.message);
-  // }
+  try {
+    const res = await instance.get('/users/current-user');
+    return res?.data?.data?.user || null;
+  } catch (error) {
+    if (error.response?.status === 401) {
+      return null;
+    } else {
+      throw new Error(
+        error.response?.data?.message ||
+          'Unable to fetch user data. Please try again later.',
+      );
+    }
+  }
 }
 
 export async function logout() {

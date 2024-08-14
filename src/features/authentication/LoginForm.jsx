@@ -68,7 +68,7 @@ function LoginForm() {
         type="submit"
         className="flex w-full items-center justify-center gap-2 rounded-full border border-brand-6 bg-brand-6 px-7 py-4 text-lg leading-none text-brand-0.5 hover:bg-brand-7"
       >
-        {isPending ? <div class="lds-ring"><div></div><div></div><div></div><div></div></div> : 'Login'}
+        {isPending ? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> : 'Login'}
       </button>
     </form>
   );

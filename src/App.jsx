@@ -1,21 +1,26 @@
+import React, { Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 
-import HomePage from './pages/HomePage';
-import Products from './pages/Products';
-import ProductDetail from './pages/ProductDetail';
-import Cart from './pages/Cart';
-import Contact from './pages/Contact';
-import Account from './pages/Account';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import PageNotFound from './pages/PageNotFound';
 import AppLayout from './ui/AppLayout';
 import { DarkModeProvider } from './context/DarkModeContext';
-import About from './pages/About';
 import { BurgerMenuProvider } from './context/BurgerMenuContext';
+import LoadingSpinner from './ui/LoadingSpinner';
+import FallbackUI from './ui/FallbackUI';
+
+// Lazy load components
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const Products = React.lazy(() => import('./pages/Products'));
+const ProductDetail = React.lazy(() => import('./pages/ProductDetail'));
+const Cart = React.lazy(() => import('./pages/Cart'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const Account = React.lazy(() => import('./pages/Account'));
+const Login = React.lazy(() => import('./pages/Login'));
+const SignUp = React.lazy(() => import('./pages/SignUp'));
+const PageNotFound = React.lazy(() => import('./pages/PageNotFound'));
+const About = React.lazy(() => import('./pages/About'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +29,7 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 function App() {
   return (
     <BurgerMenuProvider>
@@ -33,8 +39,21 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route element={<AppLayout />}>
+                <Route
+                  path="home"
+                  element={
+                    <Suspense
+                      fallback={
+                        <div className='h-screen m-auto w-full'>
+                          <FallbackUI />
+                        </div>
+                      }
+                    >
+                      <HomePage />
+                    </Suspense>
+                  }
+                />
                 <Route index element={<Navigate replace to="home" />} />
-                <Route path="home" element={<HomePage />} />
                 <Route path="products" element={<Products />} />
                 <Route path="products/:productId" element={<ProductDetail />} />
                 <Route path="cart" element={<Cart />} />
@@ -44,7 +63,6 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
               </Route>
-
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
@@ -64,7 +82,7 @@ function App() {
                 maxWidth: '500px',
                 padding: '16px 24px',
                 backgroundColor: '#f9fafb',
-                color: '##1f2937',
+                color: '#1f2937',
               },
             }}
           />
