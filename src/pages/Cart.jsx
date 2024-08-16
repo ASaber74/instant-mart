@@ -1,4 +1,4 @@
-import CartItems from "../features/cart/CartItems";
+import CartItems from '../features/cart/CartItems';
 
 function Cart() {
   return (
@@ -6,7 +6,7 @@ function Cart() {
       <div className="mb-12 text-center">
         <h1 className="text-3xl font-bold">SHOPPING CART</h1>
       </div>
-      <CartItems type='page'/>
+      <CartItems type="page" />
     </section>
   );
 }

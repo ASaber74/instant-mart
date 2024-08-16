@@ -21,7 +21,7 @@ function Hero() {
           <h2 className="text-lg  font-normal tracking-tight  sm:text-xl md:text-xl xl:text-3xl">
             Where Every Page Holds a New Adventure
           </h2>
-          <p className="sm:text-md  max-w-xl text-sm leading-5  text-grey-4 md:text-lg md:leading-8 xl:max-w-2xl ">
+          <p className="sm:text-md  max-w-xl text-sm leading-5  text-hero-text md:text-lg md:leading-8 xl:max-w-2xl ">
             Welcome to InstantMart, your haven for book lovers and avid readers
             alike.
             <span className="">

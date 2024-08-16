@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-// import CartTab from '../features/cart/CartTab';
+import CartTab from '../features/cart/CartTab';
+import { useCart } from '../context/ShoppingCartContext';
+import { AnimatePresence } from 'framer-motion';
 
 function AppLayout() {
+  const { isCartOpen } = useCart();
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -13,7 +16,10 @@ function AppLayout() {
       </main>
 
       <Footer />
-      {/* <CartTab /> */}
+
+      <AnimatePresence>
+      {isCartOpen && <CartTab />}
+    </AnimatePresence>
     </div>
   );
 }

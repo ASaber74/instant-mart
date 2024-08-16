@@ -47,7 +47,7 @@ function PopularProducts() {
       </div>
       <div className="mt-16 grid  grid-cols-card place-items-center gap-4  sm:gap-6">
         {books.map((book, index) => (
-          <PopularProductsCard key={index} {...book} />
+          <PopularProductsCard key={index} book={book} />
         ))}
       </div>
     </motion.div>

@@ -9,6 +9,7 @@ import { DarkModeProvider } from './context/DarkModeContext';
 import { BurgerMenuProvider } from './context/BurgerMenuContext';
 import FallbackUI from './ui/FallbackUI';
 import ScrollToTop from './utils/ScrollToTop';
+import { CartProvider } from './context/ShoppingCartContext';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const Products = React.lazy(() => import('./pages/Products'));
@@ -33,164 +34,166 @@ function App() {
   return (
     <BurgerMenuProvider>
       <DarkModeProvider>
-        <QueryClientProvider client={queryClient}>
-          <ReactQueryDevtools initialIsOpen={false} />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route element={<AppLayout />}>
-                <Route
-                  path="home"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <HomePage />
-                    </Suspense>
-                  }
-                />
-                <Route index element={<Navigate replace to="home" />} />
-                <Route
-                  path="products"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <Products />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="products/:productId"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <ProductDetail />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="cart"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <Cart />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="account"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <Account />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="contact"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <Contact />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="about"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <About />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="login"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <Login />
-                    </Suspense>
-                  }
-                />
-                <Route
-                  path="signup"
-                  element={
-                    <Suspense
-                      fallback={
-                        <div className="m-auto h-screen w-full">
-                          <FallbackUI />
-                        </div>
-                      }
-                    >
-                      <SignUp />
-                    </Suspense>
-                  }
-                />
-              </Route>
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </BrowserRouter>
-          <Toaster
-            position="top-center"
-            gutter={12}
-            containerStyle={{ margin: '8px' }}
-            toastOptions={{
-              success: {
-                duration: 3000,
-              },
-              error: {
-                duration: 5000,
-              },
-              style: {
-                fontSize: '16px',
-                maxWidth: '500px',
-                padding: '16px 24px',
-                backgroundColor: '#f9fafb',
-                color: '#1f2937',
-              },
-            }}
-          />
-        </QueryClientProvider>
+        <CartProvider>
+          <QueryClientProvider client={queryClient}>
+            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route element={<AppLayout />}>
+                  <Route
+                    path="home"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <HomePage />
+                      </Suspense>
+                    }
+                  />
+                  <Route index element={<Navigate replace to="home" />} />
+                  <Route
+                    path="products"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <Products />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="products/:productId"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <ProductDetail />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="cart"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <Cart />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="account"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <Account />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="contact"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <Contact />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="about"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <About />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="login"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <Login />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="signup"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <SignUp />
+                      </Suspense>
+                    }
+                  />
+                </Route>
+                <Route path="*" element={<PageNotFound />} />
+              </Routes>
+            </BrowserRouter>
+            <Toaster
+              position="top-center"
+              gutter={12}
+              containerStyle={{ margin: '8px' }}
+              toastOptions={{
+                success: {
+                  duration: 3000,
+                },
+                error: {
+                  duration: 5000,
+                },
+                style: {
+                  fontSize: '16px',
+                  maxWidth: '500px',
+                  padding: '16px 24px',
+                  backgroundColor: '#f9fafb',
+                  color: '#1f2937',
+                },
+              }}
+            />
+          </QueryClientProvider>
+        </CartProvider>
       </DarkModeProvider>
     </BurgerMenuProvider>
   );

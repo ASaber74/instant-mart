@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCart } from '../context/ShoppingCartContext';
 
 const QuantitySelector = ({ onChange }) => {
   const [quantity, setQuantity] = useState(1);

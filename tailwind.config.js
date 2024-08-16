@@ -50,6 +50,8 @@ export default {
         'brand-7': 'var(--color-brand-700)',
         'brand-8': 'var(--color-brand-800)',
         'brand-9': 'var(--color-brand-900)',
+
+        'hero-text': 'var(--color-hero-text)',
       },
       boxShadow: {
         sm: 'var(--shadow-sm)',
