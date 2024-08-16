@@ -14,9 +14,9 @@ function CartButton() {
   return (
     // <Link to="/cart">
     <button
-      onClick={toggleCart}
+      onClick={user && toggleCart}
       aria-label="Cart button"
-      className="p- relative mt-[4px] hidden  rounded-full border-transparent bg-none transition duration-200 ease-in-out hover:bg-grey-2 md:block"
+      className="p-1 relative mt-[4px] hidden  rounded-full border-transparent bg-none transition duration-200 ease-in-out hover:bg-grey-2 md:block"
     >
       {isDarkMode ? (
         <IoCart className={svgClass} />

@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/ShoppingCartContext';
 
 const CartItems = ({ type }) => {
-  const { cartItems, removeItemFromCart } = useCart();
+  const { cartItems, removeItemFromCart, closeCart } = useCart();
   const [quantities, setQuantities] = useState(
     cartItems.reduce((acc, item) => {
       acc[item.id] = item.quantity || 1;
       return acc;
-    }, {})
+    }, {}),
   );
 
   const handleQuantityChange = (id, newQuantity) => {
@@ -57,7 +57,12 @@ const CartItems = ({ type }) => {
                     <p className="text-lg font-bold">{item.name}</p>
                     <p className="text-grey-4">Author: {item.author}</p>
                     <p className="text-grey-4">Genre: {item.genre}</p>
-                    <button className="text-sm text-red-500" onClick={() =>removeItemFromCart(item.id)}>Remove</button>
+                    <button
+                      className="text-sm text-red-500"
+                      onClick={() => removeItemFromCart(item.id)}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </td>
                 <td className="px-6 py-4">{formatCurrency(item.price)}</td>
@@ -94,10 +99,10 @@ const CartItems = ({ type }) => {
 
   if (type === 'tab') {
     return (
-      <div className="space-y-10">
+      <div className="space-y-10 ">
         {cartItems.map((item) => (
-          <div key={item.id} className="flex gap-4">
-            <Link to={`/products/${item.id}`}>
+          <div key={item.id} className="flex gap-4 border-b border-grey-3 last:border-b-0 pb-4">
+            <Link to={`/products/${item.id}`} onClick={closeCart}>
               <img
                 src={item.imageUrl}
                 alt={item.name}
@@ -109,16 +114,21 @@ const CartItems = ({ type }) => {
               <p className="text-grey-4">Author: {item.author}</p>
               <p className="text-grey-4">Genre: {item.genre}</p>
               <p className="font-bold text-grey-4">
-                {formatCurrency(quantities[item.id] * item.price)}
+                {formatCurrency(item.price)}
               </p>
-              <div className="flex items-center justify-center gap-4 pt-1">
+              <div className="mr-auto flex items-center justify-start gap-4 pt-1">
                 <QuantitySelector
                   value={quantities[item.id]}
                   onChange={(newQuantity) =>
                     handleQuantityChange(item.id, newQuantity)
                   }
                 />
-                <button className="text-sm text-red-500" onClick={() => removeItemFromCart(item.id)}>Remove</button>
+                <button
+                  className="text-sm text-red-500"
+                  onClick={() => removeItemFromCart(item.id)}
+                >
+                  Remove
+                </button>
               </div>
             </div>
           </div>
@@ -126,7 +136,6 @@ const CartItems = ({ type }) => {
       </div>
     );
   }
-
 };
 
 export default CartItems;

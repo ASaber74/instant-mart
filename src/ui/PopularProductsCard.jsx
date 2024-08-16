@@ -4,11 +4,13 @@ import { formatCurrency } from '../utils/helpers';
 import { useCart } from '../context/ShoppingCartContext';
 
 function PopularProductsCard({ book }) {
-  const { addItemToCart, openCart } = useCart();
+  const { addItemToCart, openCart, isCartOpen } = useCart();
 
   const handleAddToCart = (book) => {
     addItemToCart(book);
-    openCart();
+    if (!isCartOpen) {
+      openCart();
+    }
   };
 
   return (

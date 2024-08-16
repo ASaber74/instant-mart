@@ -36,7 +36,7 @@ const CartTab = () => {
         </span>
       </div>
 
-      <div className='overflow-y-auto'>
+      <div className="overflow-y-auto">
         <CartItems type="tab" />
       </div>
 
@@ -46,8 +46,11 @@ const CartTab = () => {
           <span className="text-xl">{formatCurrency(books[0].price)}</span>
         </div>
         <div className="mt-auto grid grid-cols-2 gap-4">
-          <button className="focus:bg-brand-700 block flex-grow rounded-2xl bg-brand-6 px-4 py-2 text-sm font-semibold uppercase text-brand-0.5 transition-colors duration-300 hover:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3">
-            <Link to="/cart" onClick={toggleCart}>
+          <button
+            onClick={toggleCart}
+            className="focus:bg-brand-700 block flex-grow rounded-2xl bg-brand-6 px-4 py-2 text-sm font-semibold uppercase text-brand-0.5 transition-colors duration-300 hover:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3"
+          >
+            <Link to="/cart">
               <div className="flex items-center justify-center gap-2">
                 {isDarkMode ? (
                   <BsBagFill className={svgClass} />
