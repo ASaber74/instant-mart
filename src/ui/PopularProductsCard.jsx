@@ -2,15 +2,20 @@ import { HiStar } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 import { formatCurrency } from '../utils/helpers';
 import { useCart } from '../context/ShoppingCartContext';
+import useUser from '../features/authentication/useUser';
+import toast from 'react-hot-toast';
 
 function PopularProductsCard({ book }) {
   const { addItemToCart, openCart, isCartOpen } = useCart();
+  const { user } = useUser();
 
   const handleAddToCart = (book) => {
+    if (!user) return toast.error('Please login first to add to cart');
     addItemToCart(book);
     if (!isCartOpen) {
       openCart();
     }
+    console.log('clicked');
   };
 
   return (

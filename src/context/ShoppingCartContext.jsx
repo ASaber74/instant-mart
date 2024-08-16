@@ -1,22 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [totalItems, setTotalItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addItemToCart = (item) => {
-    
     setCartItems((prevItems) => {
       const itemExists = prevItems.find((cartItem) => cartItem.id === item.id);
 
       if (itemExists) {
-        return prevItems.map((cartItem) => {
-          return cartItem.id === item.id
+        return prevItems.map((cartItem) =>
+          cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem;
-        });
+            : cartItem
+        );
       }
       return [...prevItems, { ...item, quantity: 1 }];
     });
@@ -24,7 +25,7 @@ export function CartProvider({ children }) {
 
   const removeItemFromCart = (id) => {
     setCartItems((prevItems) =>
-      prevItems.filter((cartItem) => cartItem.id !== id),
+      prevItems.filter((cartItem) => cartItem.id !== id)
     );
   };
 
@@ -33,8 +34,8 @@ export function CartProvider({ children }) {
       prevItems.map((cartItem) =>
         cartItem.id === id
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
-          : cartItem,
-      ),
+          : cartItem
+      )
     );
   };
 
@@ -43,8 +44,8 @@ export function CartProvider({ children }) {
       prevItems.map((cartItem) =>
         cartItem.id === id
           ? { ...cartItem, quantity: cartItem.quantity - 1 }
-          : cartItem,
-      ),
+          : cartItem
+      )
     );
   };
 
@@ -60,6 +61,17 @@ export function CartProvider({ children }) {
     setIsCartOpen(false);
   };
 
+  useEffect(() => {
+    const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const totalPrice = cartItems.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    setTotalItems(totalItems);
+    setTotalPrice(totalPrice);
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
@@ -72,6 +84,8 @@ export function CartProvider({ children }) {
         toggleCart,
         openCart,
         closeCart,
+        totalItems,
+        totalPrice,
       }}
     >
       {children}

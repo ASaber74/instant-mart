@@ -1,29 +1,28 @@
-import { useState } from 'react';
-import { useCart } from '../context/ShoppingCartContext';
-
-const QuantitySelector = ({ onChange }) => {
-  const [quantity, setQuantity] = useState(1);
-
+const QuantitySelector = ({ value, onChange }) => {
   const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-      onChange(quantity - 1);
+    if (value > 1) {
+      onChange(value - 1);
     }
   };
 
   const handleIncrease = () => {
-    setQuantity((prev) => prev + 1);
-    onChange(quantity + 1);
+    onChange(value + 1);
   };
 
   return (
-    <div className="max-w-24">
-      <div className="flex items-center rounded-md border border-gray-300">
-        <button onClick={handleDecrease} className="px-3 py-2 text-gray-700">
+    <div className="max-w-24 border border-grey-5 rounded-md">
+      <div className="flex items-center justify-center">
+        <button
+          onClick={handleDecrease}
+          className="px-3 py-2 text-grey-5 focus:outline-none"
+        >
           -
         </button>
-        <span className="px-3 py-2 text-center">{quantity}</span>
-        <button onClick={handleIncrease} className="px-3 py-2 text-gray-700">
+        <span className="w-10 px-2 py-2 text-center text-grey-5">{value}</span>
+        <button
+          onClick={handleIncrease}
+          className="px-3 py-2 text-grey-5 focus:outline-none"
+        >
           +
         </button>
       </div>

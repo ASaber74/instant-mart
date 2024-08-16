@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsCartCheck } from 'react-icons/bs';
 import QuantitySelector from '../../ui/QuantitySelector';
 import { formatCurrency } from '../../utils/helpers';
@@ -6,23 +6,29 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/ShoppingCartContext';
 
 const CartItems = ({ type }) => {
-  const { cartItems, removeItemFromCart, closeCart } = useCart();
-  const [quantities, setQuantities] = useState(
-    cartItems.reduce((acc, item) => {
-      acc[item.id] = item.quantity || 1;
-      return acc;
-    }, {}),
-  );
+  const {
+    cartItems,
+    removeItemFromCart,
+    increaseItemQuantity,
+    decreaseItemQuantity,
+    closeCart,
+    totalItems,
+    totalPrice,
+  } = useCart();
 
-  const handleQuantityChange = (id, newQuantity) => {
-    setQuantities({
-      ...quantities,
-      [id]: newQuantity,
-    });
+  const handleQuantityChange = (id, newQuantity, currentQuantity) => {
+    const quantityDifference = newQuantity - currentQuantity;
+
+    if (quantityDifference > 0) {
+      for (let i = 0; i < quantityDifference; i++) {
+        increaseItemQuantity(id);
+      }
+    } else {
+      for (let i = 0; i < Math.abs(quantityDifference); i++) {
+        decreaseItemQuantity(id);
+      }
+    }
   };
-
-  const calculateTotal = (items) =>
-    items.reduce((acc, item) => acc + item.price * quantities[item.id], 0);
 
   if (type === 'page') {
     return (
@@ -30,7 +36,7 @@ const CartItems = ({ type }) => {
         <table className="min-w-full border-collapse">
           <thead>
             <tr className="border-b border-b-grey-5">
-              <th className="text-grey- w-1/4 px-6 py-3 text-left font-medium uppercase">
+              <th className="w-1/4 px-6 py-3 text-left font-medium uppercase text-grey-5">
                 Product
               </th>
               <th className="w-1/4 px-6 py-3 text-left font-medium uppercase text-grey-5">
@@ -68,29 +74,29 @@ const CartItems = ({ type }) => {
                 <td className="px-6 py-4">{formatCurrency(item.price)}</td>
                 <td className="max-w-[100px] px-6 py-4">
                   <QuantitySelector
-                    value={quantities[item.id]}
+                    value={item.quantity}
                     onChange={(newQuantity) =>
-                      handleQuantityChange(item.id, newQuantity)
+                      handleQuantityChange(item.id, newQuantity, item.quantity)
                     }
                   />
                 </td>
                 <td className="px-6 py-4">
-                  {formatCurrency(quantities[item.id] * item.price)}
+                  {formatCurrency(item.price * item.quantity)}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="mt-6 flex items-center justify-end gap-16">
-          <p className="space-x-4 text-2xl font-medium">Sub Total</p>
-          <span className="text-xl">
-            {formatCurrency(calculateTotal(cartItems))}
-          </span>
+          <p className="text-2xl font-medium">
+            Subtotal ({totalItems} {totalItems === 1 ? 'item' : 'items'})
+          </p>
+          <span className="text-xl">{formatCurrency(totalPrice)}</span>
         </div>
-        <button className="focus:bg-brand-700 ml-auto mt-6 block w-48 flex-grow rounded-2xl bg-brand-6 px-4 py-2 text-sm font-semibold uppercase text-brand-0.5 transition-colors duration-300 hover:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3">
+        <button className="focus:bg-brand-700 ml-auto mt-6 block w-48 rounded-2xl bg-brand-6 px-4 py-2 text-sm font-semibold uppercase text-brand-0.5 transition-colors duration-300 hover:bg-brand-7 focus:outline-none focus:ring focus:ring-brand-7 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3">
           <div className="flex items-center justify-center gap-2">
-            <BsCartCheck className={'h-5 w-5'} />
-            <p> Order Now</p>
+            <BsCartCheck className="h-5 w-5" />
+            <p>Order Now</p>
           </div>
         </button>
       </div>
@@ -99,9 +105,12 @@ const CartItems = ({ type }) => {
 
   if (type === 'tab') {
     return (
-      <div className="space-y-10 ">
+      <div className="space-y-10">
         {cartItems.map((item) => (
-          <div key={item.id} className="flex gap-4 border-b border-grey-3 last:border-b-0 pb-4">
+          <div
+            key={item.id}
+            className="flex gap-4 border-b border-grey-3 pb-4 last:border-b-0"
+          >
             <Link to={`/products/${item.id}`} onClick={closeCart}>
               <img
                 src={item.imageUrl}
@@ -118,9 +127,9 @@ const CartItems = ({ type }) => {
               </p>
               <div className="mr-auto flex items-center justify-start gap-4 pt-1">
                 <QuantitySelector
-                  value={quantities[item.id]}
+                  value={item.quantity}
                   onChange={(newQuantity) =>
-                    handleQuantityChange(item.id, newQuantity)
+                    handleQuantityChange(item.id, newQuantity, item.quantity)
                   }
                 />
                 <button
@@ -136,6 +145,8 @@ const CartItems = ({ type }) => {
       </div>
     );
   }
+
+  return null;
 };
 
 export default CartItems;

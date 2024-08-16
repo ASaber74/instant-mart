@@ -8,7 +8,7 @@ import { useCart } from '../context/ShoppingCartContext';
 function CartButton() {
   const { isDarkMode } = useDarkMode();
   const { user } = useUser();
-  const { toggleCart } = useCart();
+  const { toggleCart, totalItems } = useCart();
 
   const svgClass = 'w-6 h-6';
   return (
@@ -25,7 +25,7 @@ function CartButton() {
       )}
       {user?.name && (
         <span className="absolute left-3 top-2/3 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-sm text-white">
-          0
+          {totalItems}
         </span>
       )}
     </button>
