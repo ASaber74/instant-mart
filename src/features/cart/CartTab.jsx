@@ -7,10 +7,12 @@ import { formatCurrency } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/ShoppingCartContext';
 import { motion } from 'framer-motion';
+import { BsCartPlus, BsCartPlusFill } from 'react-icons/bs';
+
 
 const CartTab = () => {
   const { isDarkMode } = useDarkMode();
-  const { toggleCart, totalItems, totalPrice } = useCart();
+  const { toggleCart, totalItems, totalPrice, cartItems } = useCart();
 
   const slideVariants = {
     hidden: { x: '100%' },
@@ -22,13 +24,11 @@ const CartTab = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-end">
-      {/* Overlay */}
       <div
         className="fixed inset-0 bg-black opacity-50"
         onClick={toggleCart}
       ></div>
 
-      {/* CartTab */}
       <motion.div
         className="z-10 grid h-screen w-[450px] grid-rows-[60px_1fr_180px] space-y-5 bg-grey-0.5 px-4 pt-3 text-grey-6 shadow-lg"
         variants={slideVariants}
@@ -44,7 +44,23 @@ const CartTab = () => {
         </div>
 
         <div className="overflow-y-auto">
-          <CartItems type="tab" />
+          {cartItems.length !== 0 ? (
+            <CartItems type="tab" />
+          ) : (
+            <div className="flex min-h-[60vh] flex-col items-center justify-center gap-2">
+              {isDarkMode ? (
+                <BsCartPlus className="mb-4 text-7xl text-grey-4" />
+              ) : (
+                <BsCartPlusFill className="mb-4 text-7xl text-grey-4" />
+              )}
+              <p className="text-3xl font-medium text-grey-5">
+                Your cart is empty
+              </p>
+              <p className="text-xl text-grey-4">
+                Add items to start shopping!
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="-mx-4 -my-3 flex flex-col bg-grey-0 px-3 pb-4">
