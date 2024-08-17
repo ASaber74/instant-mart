@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { footerLinks, socialMedia } from '../constants';
 import Logo from './Logo';
 
@@ -34,7 +35,9 @@ function Footer() {
                     className="mt-3 cursor-pointer leading-normal text-grey-6 hover:text-grey-5"
                     key={link.name}
                   >
+                    <Link to={link.link}>
                     {link.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

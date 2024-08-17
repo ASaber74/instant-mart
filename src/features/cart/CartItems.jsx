@@ -119,7 +119,7 @@ const CartItems = ({ type }) => {
               />
             </Link>
             <div className="space-y-0.5">
-              <p className="text-lg font-bold">{item.name}</p>
+              <p className="text-lg font-bold">{item.name} <span className='text-sm font-normal text-grey-4'>x{item.quantity}</span></p>
               <p className="text-grey-4">Author: {item.author}</p>
               <p className="text-grey-4">Genre: {item.genre}</p>
               <p className="font-bold text-grey-4">

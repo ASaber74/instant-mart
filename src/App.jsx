@@ -10,6 +10,10 @@ import { BurgerMenuProvider } from './context/BurgerMenuContext';
 import FallbackUI from './ui/FallbackUI';
 import ScrollToTop from './utils/ScrollToTop';
 import { CartProvider } from './context/ShoppingCartContext';
+import FAQ from './pages/FAQ';
+import HowItWorks from './pages/HowItWorks';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import PaymentPolicy from './pages/PaymentPolicy';
 
 const HomePage = React.lazy(() => import('./pages/HomePage'));
 const Products = React.lazy(() => import('./pages/Products'));
@@ -137,6 +141,62 @@ function App() {
                         }
                       >
                         <About />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="faq"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <FAQ />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="how-it-works"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <HowItWorks />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="privacy-policy"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <PrivacyPolicy />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="payment-policy"
+                    element={
+                      <Suspense
+                        fallback={
+                          <div className="m-auto h-screen w-full">
+                            <FallbackUI />
+                          </div>
+                        }
+                      >
+                        <PaymentPolicy />
                       </Suspense>
                     }
                   />
