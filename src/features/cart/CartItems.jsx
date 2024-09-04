@@ -4,10 +4,10 @@ import QuantitySelector from '../../ui/QuantitySelector';
 import { formatCurrency } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/ShoppingCartContext';
+import useUser from '../authentication/useUser';
 
 const CartItems = ({ type }) => {
   const {
-    cartItems,
     removeItemFromCart,
     increaseItemQuantity,
     decreaseItemQuantity,
@@ -15,6 +15,14 @@ const CartItems = ({ type }) => {
     totalItems,
     totalPrice,
   } = useCart();
+
+  const { isLoading: isLoadingUser, user } = useUser();
+
+  if (isLoadingUser) return;
+
+  const cartItems = user?.cart;
+
+  console.log(cartItems);
 
   const handleQuantityChange = (id, newQuantity, currentQuantity) => {
     const quantityDifference = newQuantity - currentQuantity;
@@ -51,21 +59,21 @@ const CartItems = ({ type }) => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((item) => (
-              <tr key={item.id} className="border-b border-b-grey-5">
+            {cartItems.map(({ book: item, count }) => (
+              <tr key={item._id} className="border-b border-b-grey-5">
                 <td className="flex items-center space-x-4 px-6 py-4">
                   <img
-                    src={item.imageUrl}
+                    src={item.imageCover}
                     alt={item.name}
                     className="h-20 w-20 rounded-full object-cover"
                   />
                   <div className="space-y-0.5">
                     <p className="text-lg font-bold">{item.name}</p>
                     <p className="text-grey-4">Author: {item.author}</p>
-                    <p className="text-grey-4">Genre: {item.genre}</p>
+                    <p className="text-grey-4">Genre: {item.category}</p>
                     <button
                       className="text-sm text-red-500"
-                      onClick={() => removeItemFromCart(item.id)}
+                      onClick={() => removeItemFromCart(item._id)}
                     >
                       Remove
                     </button>
@@ -74,14 +82,14 @@ const CartItems = ({ type }) => {
                 <td className="px-6 py-4">{formatCurrency(item.price)}</td>
                 <td className="max-w-[100px] px-6 py-4">
                   <QuantitySelector
-                    value={item.quantity}
+                    value={count}
                     onChange={(newQuantity) =>
-                      handleQuantityChange(item.id, newQuantity, item.quantity)
+                      handleQuantityChange(item._id, newQuantity, count)
                     }
                   />
                 </td>
                 <td className="px-6 py-4">
-                  {formatCurrency(item.price * item.quantity)}
+                  {formatCurrency(item.price * count)}
                 </td>
               </tr>
             ))}
@@ -106,35 +114,40 @@ const CartItems = ({ type }) => {
   if (type === 'tab') {
     return (
       <div className="space-y-10">
-        {cartItems.map((item) => (
+        {cartItems.map(({ book: item, count }) => (
           <div
-            key={item.id}
+            key={item._id}
             className="flex gap-4 border-b border-grey-3 pb-4 last:border-b-0"
           >
-            <Link to={`/products/${item.id}`} onClick={closeCart}>
+            <Link to={`/products/${item._id}`} onClick={closeCart}>
               <img
-                src={item.imageUrl}
+                src={item.imageCover}
                 alt={item.name}
                 className="h-24 w-24 rounded-lg object-cover"
               />
             </Link>
             <div className="space-y-0.5">
-              <p className="text-lg font-bold">{item.name} <span className='text-sm font-normal text-grey-4'>x{item.quantity}</span></p>
+              <p className="text-lg font-bold">
+                {item.name}{' '}
+                <span className="text-sm font-normal text-grey-4">
+                  x{count}
+                </span>
+              </p>
               <p className="text-grey-4">Author: {item.author}</p>
-              <p className="text-grey-4">Genre: {item.genre}</p>
+              <p className="text-grey-4">Genre: {item.category}</p>
               <p className="font-bold text-grey-4">
                 {formatCurrency(item.price)}
               </p>
               <div className="mr-auto flex items-center justify-start gap-4 pt-1">
                 <QuantitySelector
-                  value={item.quantity}
+                  value={count}
                   onChange={(newQuantity) =>
-                    handleQuantityChange(item.id, newQuantity, item.quantity)
+                    handleQuantityChange(item._id, newQuantity, count)
                   }
                 />
                 <button
                   className="text-sm text-red-500"
-                  onClick={() => removeItemFromCart(item.id)}
+                  onClick={() => removeItemFromCart(item._id)}
                 >
                   Remove
                 </button>

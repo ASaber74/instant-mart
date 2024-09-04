@@ -1,15 +1,19 @@
 import { useDarkMode } from '../context/DarkModeContext';
 import { useCart } from '../context/ShoppingCartContext';
+import useUser from '../features/authentication/useUser';
 import CartItems from '../features/cart/CartItems';
 import { BsCartPlus, BsCartPlusFill } from 'react-icons/bs';
 
 function Cart() {
-  const { cartItems } = useCart();
+  // const { cartItems } = useCart();
+  const { isLoading, user } = useUser();
   const { isDarkMode } = useDarkMode();
 
+  console.log(user);
+  if (isLoading) return;
   return (
     <section className="my-10">
-      {cartItems.length !== 0 ? (
+      {user.cart.length !== 0 ? (
         <>
           <div className="mb-12 text-center">
             <h1 className="text-3xl font-bold">SHOPPING CART</h1>

@@ -36,11 +36,11 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <BurgerMenuProvider>
-      <DarkModeProvider>
-        <CartProvider>
-          <QueryClientProvider client={queryClient}>
-            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    <QueryClientProvider client={queryClient}>
+      <BurgerMenuProvider>
+        <DarkModeProvider>
+          <CartProvider>
+            <ReactQueryDevtools initialIsOpen={false} />
             <BrowserRouter>
               <ScrollToTop />
               <Routes>
@@ -252,10 +252,10 @@ function App() {
                 },
               }}
             />
-          </QueryClientProvider>
-        </CartProvider>
-      </DarkModeProvider>
-    </BurgerMenuProvider>
+          </CartProvider>
+        </DarkModeProvider>
+      </BurgerMenuProvider>
+    </QueryClientProvider>
   );
 }
 

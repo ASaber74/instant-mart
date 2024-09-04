@@ -4,14 +4,17 @@ import { formatCurrency } from '../utils/helpers';
 import { useCart } from '../context/ShoppingCartContext';
 import useUser from '../features/authentication/useUser';
 import toast from 'react-hot-toast';
+import useUpdateCart from '../features/cart/useUpdateCart';
 
 function PopularProductsCard({ book }) {
   const { addItemToCart, openCart, isCartOpen } = useCart();
+  const { isLoading: isUpdatingCart, updateCart } = useUpdateCart();
   const { user } = useUser();
 
-  const handleAddToCart = (book) => {
+  const handleAddToCart = async (book) => {
     if (!user) return toast.error('Please login first to add to cart');
-    addItemToCart(book);
+    await updateCart({ bookId: book._id });
+    // addItemToCart(book);
     if (!isCartOpen) {
       openCart();
     }
@@ -21,10 +24,10 @@ function PopularProductsCard({ book }) {
   return (
     <>
       <div className=" flex  w-[285px] flex-col overflow-hidden rounded-lg bg-grey-1 shadow-2xl ">
-        <Link to={`/products/${book.id}`} className="cursor-pointer">
+        <Link to={`/products/${book._id}`} className="cursor-pointer">
           <img
             loading="lazy"
-            src={book.imageUrl}
+            src={book.imageCover}
             alt={book.name}
             height={285}
             width={320}

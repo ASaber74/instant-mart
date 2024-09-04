@@ -8,12 +8,16 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../context/ShoppingCartContext';
 import { motion } from 'framer-motion';
 import { BsCartPlus, BsCartPlusFill } from 'react-icons/bs';
-
+import useUser from '../authentication/useUser';
 
 const CartTab = () => {
   const { isDarkMode } = useDarkMode();
-  const { toggleCart, totalItems, totalPrice, cartItems } = useCart();
+  const { toggleCart, totalItems, totalPrice } = useCart();
+  const { isLoading, user } = useUser();
 
+  const cartItems = user.cart;
+
+  if (isLoading) return;
   const slideVariants = {
     hidden: { x: '100%' },
     visible: { x: 0, transition: { type: 'tween', duration: 0.3 } },
